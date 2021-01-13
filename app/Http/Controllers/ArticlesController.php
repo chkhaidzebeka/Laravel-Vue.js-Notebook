@@ -8,6 +8,13 @@ use Illuminate\Support\Carbon;
 
 class ArticlesController extends Controller
 {
+
+    // Rate limiting defined in RouteServiceProvider.php
+    // 60 requests per minute
+    public function __construct(){
+        $this->middleware(['throttle:article']);
+    }
+
     /**
      * Display a listing of the resource.
      *
