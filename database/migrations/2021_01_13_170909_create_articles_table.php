@@ -15,6 +15,10 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('link')->unique();
+            $table->boolean('read')->nullable();
+            $table->string('read_at')->nullable();
             $table->timestamps();
         });
     }
