@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class ArticlesController extends Controller
 {
@@ -74,7 +75,21 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+        if (!$article) {
+            return [
+                'success'   =>  false,
+                'message'   =>  'No such article'
+            ];
+            die;
+        }
+
+
+        $article->read = $request->completed ? true : false;
+        $article->read_at = $request->completed ? Carbon::now() : null;
+        $article->save();
+
+        return $article;
     }
 
     /**
@@ -85,6 +100,21 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article = Article::find($id);
+        if (!$article) {
+            return [
+                'success'   =>  false,
+                'message'   =>  'No such article'
+            ];
+            die;
+        }
+
+        $article->delete();
+
+        return [
+            'success'   =>  true,
+            'message'   =>  'article deleted successfully'
+        ];
+
     }
 }
