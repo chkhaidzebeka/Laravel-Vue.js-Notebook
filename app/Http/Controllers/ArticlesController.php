@@ -43,6 +43,15 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
+
+        if ($request->name == null || $request->link == null) {
+            return [
+                'error' =>  true,
+                'message'   =>  'empty data'
+            ];
+        }
+
+
         $article = Article::create([
             'name'  =>  $request->name,
             'link'  =>  $request->link,

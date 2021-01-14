@@ -1,0 +1,14 @@
+body {
+	box-sizing: border-box;
+	background: #f3f4f6;
+	font-family: Nunito;
+	max-width: 1440px;
+	max-height: 100%;
+	margin: 1% auto;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+
