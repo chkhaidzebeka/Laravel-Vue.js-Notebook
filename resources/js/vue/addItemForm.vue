@@ -42,6 +42,11 @@
 					this.setMessages('warning','Please enter inputs')
 					return false;
 				}
+
+				if(!this.validateUrl(this.items.link)) {
+					this.setMessages('warning','Link is not a valid URL')
+					return false;
+				}
 				
 				console.log('sending')
 				axios.post('api/v1/article/new',{
@@ -70,6 +75,17 @@
 			},
 			freeInputs() {
 				this.items.name = this.items.link = ""
+			},
+			validateUrl(string) {
+				let url;
+
+				try {
+					url = new URL(string);
+				} catch (_) {
+					return false;  
+				}
+
+				return url.protocol === "http:" || url.protocol === "https:";
 			}
 		}
 	};
