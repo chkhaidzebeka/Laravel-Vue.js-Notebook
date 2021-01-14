@@ -37,14 +37,12 @@ export default {
 			axios.get('api/v1/article/all')
 			.then(resp => {
 				this.items = resp.data
-				console.log(this.items)
 			}).catch(err => {
 				console.log(err)
 			})
 		}
 	},
 	created() {
-		console.log('created...')
 		this.getList();
 	}
 };

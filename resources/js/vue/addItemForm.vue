@@ -37,7 +37,6 @@
 		},
 		methods: {
 			addItem() {
-				console.log('trying')
 				if (this.items.name == '' || this.items.link == '') {
 					this.setMessages('warning','Please enter inputs')
 					return false;
@@ -48,12 +47,10 @@
 					return false;
 				}
 				
-				console.log('sending')
 				axios.post('api/v1/article/new',{
 					name: this.items.name,
 					link: this.items.link
 				}).then(resp => {
-					console.log(resp.status)
 					this.setMessages('success','Article added successfully')
 					this.freeInputs()
 					this.$emit('reloadList')

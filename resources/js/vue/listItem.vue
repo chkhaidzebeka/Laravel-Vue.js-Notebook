@@ -24,7 +24,6 @@ export default {
 				item: this.item
 			})
 			.then(resp => {
-				console.log(resp)
 				if (resp.status == 200) {
 					this.$emit('itemchanged')
 				}
@@ -33,7 +32,6 @@ export default {
 		removeItem() {
 			axios.delete('api/v1/article/'+this.item.id)
 			.then(resp => {
-				console.log(resp)
 				if (resp.status == 200) {
 					this.$emit('itemchanged')
 				}
