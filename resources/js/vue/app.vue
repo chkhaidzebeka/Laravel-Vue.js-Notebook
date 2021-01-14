@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<div class="heading">
-			<h2 id="title">Items List</h2>
+			<h2 id="title">Articles List</h2>
 			<hr>
 
 			<add-item-form
