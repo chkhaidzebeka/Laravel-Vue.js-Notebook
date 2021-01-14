@@ -51,6 +51,18 @@ class ArticlesController extends Controller
             ];
         }
 
+        $count = Article::where([
+            'link' => $request->link
+        ])->count();
+
+        if ($count >= 1) {
+            return response()->json(
+                [
+                    'error' =>  true,
+                    'message'   =>  'please use different link'
+                ]
+            ,406);
+        }
 
         $article = Article::create([
             'name'  =>  $request->name,
@@ -101,8 +113,8 @@ class ArticlesController extends Controller
         }
 
 
-        $article->read = $request->completed ? true : false;
-        $article->read_at = $request->completed ? Carbon::now() : null;
+        $article->read = $request->item['read'] ? true : false;
+        $article->read_at = $request->item['read'] ? Carbon::now() : null;
         $article->save();
 
         return $article;

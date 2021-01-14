@@ -48,13 +48,14 @@
 					name: this.items.name,
 					link: this.items.link
 				}).then(resp => {
-					console.log(resp)
-					if (resp.status == 201) {
-						console.log('OK')
-						this.setMessages('success','Article added successfully')
-						this.freeInputs()
-					}
-				}).catch(err => console.log(err));
+					console.log(resp.status)
+					this.setMessages('success','Article added successfully')
+					this.freeInputs()
+					this.$emit('reloadList')
+				}).catch(err => {
+					console.log(err)
+					this.setMessages('warning','Please try different link')
+				});
 			},
 			showAlert() {
 				this.alert = true;

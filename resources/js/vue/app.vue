@@ -4,10 +4,15 @@
 			<h2 id="title">Items List</h2>
 			<hr>
 
-			<add-item-form />
+			<add-item-form
+				@reloadList="getList()"
+			/>
 		</div>
 
-		<list-view />
+		<list-view 
+			:items="items"
+			@reloadList="getList()"
+		/>
 
 	</div>
 </template>
@@ -21,6 +26,26 @@ export default {
 	components: {
 		addItemForm,
 		listView
+	},
+	data: function(){
+		return {
+			items: []
+		}
+	},
+	methods: {
+		getList(){
+			axios.get('api/v1/article/all')
+			.then(resp => {
+				this.items = resp.data
+				console.log(this.items)
+			}).catch(err => {
+				console.log(err)
+			})
+		}
+	},
+	created() {
+		console.log('created...')
+		this.getList();
 	}
 };
 </script>
@@ -28,13 +53,14 @@ export default {
 
 <style scoped>
 	.container {
-		background: #e5e7eb73;
 		margin: auto;
 		max-width: 550px;
 		border-radius: 2px;
 	}
 
 	.heading {
+		background: #e5e7eb73;
+
 		padding: 10px;
 	}
 
