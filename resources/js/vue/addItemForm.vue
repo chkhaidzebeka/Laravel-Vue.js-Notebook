@@ -5,7 +5,7 @@
 			<p class="alert" :class="messages.type" v-if="alert">{{ this.messages.text }}</p>
 
 			<label for="name">Article Name</label>
-			<input type="text" @keyup.enter="addItem()" id="name" placeholder="How to lost weight" v-model="items.name">
+			<input type="text" @keyup.enter="addItem()" id="name" placeholder="How to lose weight" v-model="items.name">
 
 			<label for="name">Article Link</label>
 			<input type="url" @keyup.enter="addItem()" placeholder="https://website.te/articles/1" v-model="items.link" />
