@@ -2,7 +2,7 @@
 
 success             |  warning
 :-------------------------:|:-------------------------:
-![](https://i.imgur.com/C3nVnWt.png)  |  ![](https://i.imgur.com/p7yHmRw.png)
+![](https://i.imgur.com/9dqK6Mz.png)  |  ![](https://i.imgur.com/p7yHmRw.png)
 
 ## technologies
 - Laravel API
